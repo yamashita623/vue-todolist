@@ -21,7 +21,7 @@
           </tr>
         </thead>
         <tbody>
-    <tr v-for="list in lists" :key="list.id">
+    <tr v-for="list in allLists" :key="list.id">
      
         <th>{{ list.id }}</th>
         <th>{{ list.body }}</th>
@@ -31,10 +31,6 @@
         <th><button @click="doDeleteList(list.id)">削除</button></th>
      
     </tr>
-
-    <tr>"{{ allLists }}"</tr>
-    <tr>"{{ workingLists }}"</tr>
-    <tr>"{{ doneLists }}"</tr>
     </tbody>
     </table>
     <div>
