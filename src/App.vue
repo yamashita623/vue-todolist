@@ -7,18 +7,22 @@
           type='radio'
           name='status'
           checked
-          @click='doAllLists()'
+          @click="doChangeLists('allLists')"
         />すべて</label
       >
       <label
         ><input
           type='radio'
           name='status'
-          @click='doWorkingLists()'
+          @click="doChangeLists('workingLists')"
         />作業中</label
       >
       <label
-        ><input type='radio' name='status' @click='doDoneLists()' />完了</label
+        ><input 
+        type='radio' 
+        name='status' 
+        @click="doChangeLists('doneLists')"
+        />完了</label
       >
     </form>
 
@@ -68,9 +72,8 @@ export default {
       if (this.show === 'allLists') return list;
       else if (this.show === 'workingLists')
         return list.filter((e) => e.state === '作業中');
-      else this.show === 'doneLists';
-      return list.filter((e) => e.state === '完了');
-    },
+      else return list.filter((e) => e.state === '完了');
+    }
   },
 
   methods: {
@@ -104,15 +107,13 @@ export default {
         }
       }
     },
-    doAllLists: function () {
-      this.show = 'allLists';
-    },
-    doWorkingLists: function () {
-      this.show = 'workingLists';
-    },
-    doDoneLists: function () {
-      this.show = 'doneLists';
-    },
-  },
+    doChangeLists: function (val) {
+      if (val === 'allLists')
+          return this.show = 'allLists';
+          else if (val === 'workingLists')
+            return this.show = 'workingLists';
+            else return this.show = 'doneLists';
+      }
+  }
 };
 </script>
